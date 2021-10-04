@@ -163,18 +163,6 @@ jQuery(document).ready(function($) {
 
     session.begin();
   };
-  $('.subscription-cloud .credit-pay').click(function() {
-    checkoutOpen('cloud');
-  });
-  $('.subscription-support .credit-pay').click(function() {
-    checkoutOpen('support');
-  });
-  $('.subscription-cloud .apple-pay').click(function() {
-    checkoutApple('cloud');
-  });
-  $('.subscription-support .apple-pay').click(function() {
-    checkoutApple('support');
-  });
 
   Stripe.setPublishableKey('pk_live_plmoOl3lS3k5dMNQViZWGfVR');
   Stripe.applePay.checkAvailability(function(available) {
