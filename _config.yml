@@ -1,5 +1,5 @@
-name: Pritunl Cloud
-markdown: kramdown
-highlighting: rouge
 include:
-  - .well-known
+  - "_*"
+  - "**/_*"
+  - "**/.*"
+  - "**/*"
