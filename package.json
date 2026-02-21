@@ -1,0 +1,13 @@
+{
+  "name": "pritunl-cloud-homepage",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./css/base.css -o ./css/main.css --watch",
+    "server": "python3 -m http.server",
+    "build": "npx @tailwindcss/cli -i ./css/base.css -o ./css/main.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.0",
+    "tailwindcss": "^4.2.0"
+  }
+}
