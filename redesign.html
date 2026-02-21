@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8">
+  <title>Pritunl Cloud - Self Hosted Declarative Virtualization Platform</title>
+  <meta content="Self hosted cloud with shell and python declarative deployments. KVM based alternative to Kubernetes using live templates." name="description">
+  <meta content="Pritunl Cloud - Self Hosted Declarative Virtualization Platform" property="og:title">
+  <meta content="Self hosted cloud with shell and python declarative deployments. KVM based alternative to Kubernetes using live templates." property="og:description">
+  <meta content="Pritunl Cloud - Self Hosted Declarative Virtualization Platform" property="twitter:title">
+  <meta content="Self hosted cloud with shell and python declarative deployments. KVM based alternative to Kubernetes using live templates." property="twitter:description">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+  <link href="css/main.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+</head>
+<body>
+  <div class="relative isolate bg-gray-900 overflow-hidden">
+    <!-- Gradient Style Start -->
+    <div aria-hidden="true" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+      <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
+    </div>
+    <div aria-hidden="true" class="absolute inset-x-0 top-[40%] -z-10 transform-gpu overflow-hidden blur-3xl">
+      <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"></div>
+    </div>
+    <div aria-hidden="true" class="absolute inset-x-0 bottom-0 -z-10 transform-gpu overflow-hidden blur-3xl">
+      <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
+    </div>
+    <!-- Gradient Style End -->
+
+    <!-- Header Start -->
+    <header class="absolute inset-x-0 top-0 z-50">
+      <nav aria-label="Global" class="flex items-center justify-between p-6 lg:px-8">
+        <div class="flex lg:flex-1">
+          <a href="index.html" class="-m-1.5 p-1.5">
+            <span class="sr-only">Pritunl Cloud</span>
+            <img src="images/pritunl.png" alt="Pritunl Logo" class="h-10 w-auto" />
+          </a>
+        </div>
+        <div class="flex lg:hidden">
+          <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200">
+            <span class="sr-only">Open main menu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="size-6">
+              <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="#pricing" class="text-sm/6 font-semibold text-white">Pricing</a>
+          <a href="#support" class="text-sm/6 font-semibold text-white">Support</a>
+          <a href="https://docs.pritunl.com/kb/cloud" target="_blank" class="text-sm/6 font-semibold text-white">Documentation</a>
+          <a href="https://forum.pritunl.com/" target="_blank" class="text-sm/6 font-semibold text-white">Community Forums</a>
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4 lg:items-center">
+        </div>
+      </nav>
+      <el-dialog>
+        <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
+          <div tabindex="0" class="fixed inset-0 focus:outline-none">
+            <el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10">
+              <div class="flex items-center justify-between">
+                <a href="index.html" class="-m-1.5 p-1.5">
+                  <span class="sr-only">Pritunl Cloud</span>
+                  <img src="images/Logo.png" alt="Pritunl Cloud Logo" class="h-9 w-auto" />
+                </a>
+                <button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 text-gray-200">
+                  <span class="sr-only">Close menu</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="size-6">
+                    <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+              <div class="mt-6 flow-root">
+                <div class="-my-6 divide-y divide-gray-500/30">
+                  <div class="space-y-2 py-6">
+                    <a href="#pricing" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Pricing</a>
+                    <a href="#support" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Support</a>
+                    <a href="https://docs.pritunl.com/kb/cloud" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Documentation</a>
+                    <a href="https://forum.pritunl.com/" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5">Community Forums</a>
+                  </div>
+                </div>
+              </div>
+            </el-dialog-panel>
+          </div>
+        </dialog>
+      </el-dialog>
+    </header>
+    <!-- Header End -->
+
+    <!-- Hero Section Start -->
+    <div class="pt-14">
+      <div class="py-24 sm:py-32 lg:pb-24">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <div class="mb-4 flex justify-center">
+              <span class="inline-flex items-center rounded-full bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-400 ring-1 ring-inset ring-indigo-500/20">Open Source Self Hosted Cloud</span>
+            </div>
+            <h1 class="text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl">Pritunl <span class="text-indigo-400">Cloud</span><br>Declarative <span class="text-indigo-400">KVM</span> Virtualization</h1>
+            <p class="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">KVM based alternative to Kubernetes with shell and python based live updating declarative deployments</p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+              <a href="https://cloud.demo.pritunl.com" target="_blank" class="rounded-md bg-white/10 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Live Demo</a>
+              <a href="https://docs.pritunl.com/kb/cloud/getting-started/installation" target="_blank" class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Get Started</a>
+            </div>
+          </div>
+          <div class="mt-16 flow-root sm:mt-24">
+            <div class="-m-2 rounded-xl bg-white/2.5 p-2 ring-1 ring-inset ring-white/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+              <img width="1712" height="auto" src="images/cloud_pods.png" alt="Cloud Deployments" class="rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Hero Section End -->
+
+    <!-- Features Section Start -->
+    <div class="pb-24 sm:pb-32">
+      <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+      <h2 class="mt-2 max-w-2xl text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl">Declarative Virtualization with Dynamic Shell and Python Specs</h2>
+      <p class="mt-6 max-w-2xl text-lg text-gray-400">Define resources with dynamic templates that adjust to configuration changes in the cluster. Provides the benefits of Kubernetes with a less complex architecture and fewer interdependent components.</p>
+      <div class="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-3">
+
+        <!-- Row 1, Col 1: Transparent Python Integration -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5 max-lg:rounded-t-4xl lg:rounded-tl-4xl"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)]">
+            <img src="images/cloud_python_shell_spec.png" alt="Template Spec" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left rounded-tl-3xl max-lg:rounded-t-3xl" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">Transparent Python Integration</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Utilize both shell and Python in pod templates with a transparent shared environment.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15 max-lg:rounded-t-4xl lg:rounded-tl-4xl"></div>
+        </div>
+
+        <!-- Row 1, Col 2: Instance Base Images -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+            <img src="images/cloud_images.png" alt="Instance Images" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">Instance Base Images</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Includes base images for common Linux distributions and FreeBSD.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15"></div>
+        </div>
+
+        <!-- Row 1, Col 3: Multi-Tenant Support -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5 lg:rounded-tr-4xl"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-tr-[calc(2rem+1px)]">
+            <img src="images/cloud_multi_tenant_selection.png" alt="Multi-Tenant Selection" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left lg:rounded-tr-3xl" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">Multi-Tenant Support</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Isolate resources into organizations and control user access to each organization.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15 lg:rounded-tr-4xl"></div>
+        </div>
+
+        <!-- Row 2, Col 1: VPC Networking -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+            <img src="images/cloud_vpc.png" alt="VPC Settings" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">VPC Networking</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Advanced VPC networking with routing table support. Source and destination checking option for instances allows site-to-site VPN configurations.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15"></div>
+        </div>
+
+        <!-- Row 2, Col 2: Access Policies -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+            <img src="images/cloud_policies.png" alt="Policy Settings" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">Access Policies</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Policy controls with WebAuthn, location, source network and browser options.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15"></div>
+        </div>
+
+        <!-- Row 2, Col 3: Domain Management -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+            <img src="images/cloud_domains.png" alt="Domain Management" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">Domain Management</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Integrated domain management with API support for AWS, Cloudflare and Oracle Cloud. Configure A, AAAA and CNAME records manually or automated with pods.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15"></div>
+        </div>
+
+        <!-- Row 3, Col 1: Advanced Firewall -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+            <img src="images/cloud_firewall.png" alt="Firewall Settings" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">Advanced Firewall</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Detailed network ingress control with firewall rules that can be defined through role matched rules or in pod templates.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15"></div>
+        </div>
+
+        <!-- Row 3, Col 2: Static IP Management -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+            <img src="images/cloud_ip_blocks.png" alt="Static IP Management" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">Static IP Management</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Static IP management that can manage pools of public IPv4 and IPv6 addresses that are either host specific or shared between multiple hosts. Support for DHCPv4, DHCPv6 and SLAAC is also available.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15"></div>
+        </div>
+
+        <!-- Row 3, Col 3: S3 Storage Integration -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+            <img src="images/cloud_storage.png" alt="S3 Storage Settings" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">S3 Storage Integration</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Integrated support for S3 API based storage providers. Pod template images, disk snapshots and backups are stored on the S3 storage.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15"></div>
+        </div>
+
+        <!-- Row 4, Col 1: SSH Key Management -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5 lg:rounded-bl-4xl"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-bl-[calc(2rem+1px)]">
+            <img src="images/cloud_authority.png" alt="SSH Key Management" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">SSH Key Management</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Easily manage multiple SSH keys or SSH certificates to control access to instances.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15 lg:rounded-bl-4xl"></div>
+        </div>
+
+        <!-- Row 4, Col 2: Secrets Storage -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+            <img src="images/cloud_secret.png" alt="Secrets Storage" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">Secrets Storage</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Store secrets in JSON format and provide access through the IMDS service and pod templates.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15"></div>
+        </div>
+
+        <!-- Row 4, Col 3: Load Balancer -->
+        <div class="relative">
+          <div class="absolute inset-0 rounded-lg bg-white/5 max-lg:rounded-b-4xl lg:rounded-br-4xl"></div>
+          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
+            <img src="images/cloud_load_balancer.png" alt="Load Balancer" class="m-2 h-60 rounded-sm ring-1 ring-white/10 object-cover object-left" />
+            <div class="p-6 pt-4">
+              <h3 class="text-lg font-semibold tracking-tight text-white">Load Balancer</h3>
+              <p class="mt-2 max-w-lg text-sm/6 text-gray-400">Built in load balancer to provide access from the host to web servers running on instances.</p>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-white/15 max-lg:rounded-b-4xl lg:rounded-br-4xl"></div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Features Section End -->
+
+  </div>
+</body>
+</html>
